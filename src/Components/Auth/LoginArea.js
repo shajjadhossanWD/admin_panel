@@ -4,7 +4,7 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 
-import AuthContext from "../../contexts/auth-context";
+// import AuthContext from "../../contexts/auth-context";
 import { AdminContext } from "../../contexts/AdminContext";
 import axios from "axios";
 import swal from "sweetalert";
@@ -14,7 +14,7 @@ function LoginArea({ customClass = "" }) {
   const [email, setEmail] = useState("");
   const password = useRef();
   const [alertMsg, setAlertMsg] = useState(null);
-  const context = useContext(AuthContext);
+  // const context = useContext(AuthContext);
   const { admin, token, isAuthenticating, login } = useContext(AdminContext);
 
   const navigate = useNavigate();

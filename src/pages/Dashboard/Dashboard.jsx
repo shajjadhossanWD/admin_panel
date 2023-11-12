@@ -10,7 +10,6 @@ import Button from "react-bootstrap/Button";
 import Typography from "@mui/material/Typography";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
-import logo from "../../assets/img/logoDSL.jpeg";
 import { Divider } from "@mui/material";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import { AdminContext } from "../../contexts/AdminContext";
@@ -95,8 +94,9 @@ function Dashboard(props) {
   const drawer = (
     <div className="sideBar">
       <Toolbar />
-      <img className="dashLogo mx-auto" src={logo} alt="" />
-      <Divider />
+      {/* <img className="dashLogo mx-auto" src='' alt="" /> */}
+      <h5 className="text-white mb-5">Fundbox</h5>
+      {/* <Divider /> */}
       <div className="menuDiv text-uppercase">
         <NavLink
           className="dashboardMenu"
@@ -111,7 +111,7 @@ function Dashboard(props) {
         </NavLink>
         <br />
 
-        <NavLink
+        {/* <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
           onClick={handleClose}
@@ -123,9 +123,9 @@ function Dashboard(props) {
           </span>
           ADMINS
         </NavLink>
-        <br />
+        <br /> */}
 
-        <NavLink
+        {/* <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
           onClick={handleClose}
@@ -136,9 +136,9 @@ function Dashboard(props) {
             <FaUsers style={{ fontSize: "20px" }} />
           </span>
           Customers
-        </NavLink>
+        </NavLink> */}
 
-        <div>
+        {/* <div>
           <NavLink
             id="demo-positioned-button"
             aria-controls={open ? "demo-positioned-menu" : undefined}
@@ -184,9 +184,9 @@ function Dashboard(props) {
               </MenuItem>
             </Link>
           </Menu>
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
           <NavLink
             id="demo-positioned-button"
             aria-controls={open3 ? "demo-positioned-menu" : undefined}
@@ -228,8 +228,8 @@ function Dashboard(props) {
             </Link>
 
           </Menu>
-        </div>
-
+        </div> */}
+{/* 
         <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
@@ -241,10 +241,10 @@ function Dashboard(props) {
             <GiShoppingBag style={{ fontSize: "20px" }} />
           </span>
           CUSTOMER ORDERS
-        </NavLink>
-        <br />
+        </NavLink> */}
+        {/* <br /> */}
 
-        <NavLink
+        {/* <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
           onClick={handleClose}
@@ -256,7 +256,7 @@ function Dashboard(props) {
           </span>
           Administer Orders
         </NavLink>
-        <br />
+        <br /> */}
 
 
         <NavLink
@@ -271,7 +271,7 @@ function Dashboard(props) {
           CATEGORIES
         </NavLink>
         <br />
-        <NavLink
+        {/* <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
           onClick={handleClose}
@@ -282,7 +282,7 @@ function Dashboard(props) {
           </span>
           ALL SUBSCRIBERS
         </NavLink>
-        <br />
+        <br /> */}
 
         <Button
           variant="danger"

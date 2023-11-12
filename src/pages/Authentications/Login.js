@@ -1,8 +1,6 @@
 import LoginArea from "../../Components/Auth/LoginArea";
 import PageTitle from "../../Components/Common/PageTitle";
 
-import Support from "../../Components/Common/Support";
-import Footer from "../../Components/Layout/Footer/Footer";
 
 function Login() {
   return (
@@ -13,8 +11,6 @@ function Login() {
           <LoginArea />
         </div>
       </section>
-      {/* <Support /> */}
-      <Footer />
     </div>
   );
 }

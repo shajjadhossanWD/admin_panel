@@ -1,6 +1,5 @@
 import RegisterArea from "../../Components/Auth/RegisterArea";
 import PageTitle from "../../Components/Common/PageTitle";
-import Support from "../../Components/Common/Support";
 
 function Register() {
   return (
@@ -11,7 +10,6 @@ function Register() {
           <RegisterArea />
         </div>
       </section>
-      <Support />
     </div>
   );
 }

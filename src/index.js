@@ -8,30 +8,24 @@ import "./assets/css/responsive.min.css";
 import { Provider } from "react-redux";
 import store from "./redux/Store";
 import App from "./App";
-import DslProvider from "./contexts/DSLCommerceContext";
+// import DslProvider from "./contexts/DSLCommerceContext";
 import AdminProvider from "./contexts/AdminContext";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import CartProvider from "./contexts/cart-context";
-import WishlistProvider from "./contexts/wishlist-context";
-import KycProvider from "./contexts/KycContext";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AdminProvider>
-        <DslProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <KycProvider>
+        {/* <DslProvider> */}
+            
                 <Provider store={store}>
                   <App />
                 </Provider>
-              </KycProvider>
-            </WishlistProvider>
-          </CartProvider>
-        </DslProvider>
+              
+        {/* </DslProvider> */}
       </AdminProvider>
     </BrowserRouter>
   </React.StrictMode>

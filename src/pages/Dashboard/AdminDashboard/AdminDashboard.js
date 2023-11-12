@@ -24,102 +24,90 @@ const AdminDashboard = () => {
   const [customers, setCustomers] = useState([]);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [orders, setOrders] = useState([]);
-  const [pendingOrders, setPendingOrders] = useState([]);
-  const [processingOrders, setProcessingOrders] = useState([]);
-  const [delivered, setDeliverd] = useState([]);
   const [allOrder, setAllOrder] = useState([]);
-  const [verifiedMerchants, setVerifiedMerchants] = useState([]);
-  const [merchantsProducts, setMerchantsProducts] = useState([]);
-  const [processingOrder, setProcessingOrder] = useState([]);
-  const [totalSell, setTotalSell] = useState(0);
-
-  const [value, setValue] = useState("");
-
-  const [secondLastWeekSell, setSecondLastWeekSell] = useState(0);
-  const [thirdLastWeekSell, setThirdLastWeekSell] = useState(0);
+ 
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get("https://backend.dslcommerce.com/api/admin/").then((res) => {
-      setAllAdmin(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://backend.dslcommerce.com/api/admin/").then((res) => {
+  //     setAllAdmin(res.data);
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    axios
-      .get("https://backend.dslcommerce.com/api/product/data/verified/")
-      .then((res) => {
-        setProducts(res.data.result);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://backend.dslcommerce.com/api/product/data/verified/")
+  //     .then((res) => {
+  //       setProducts(res.data.result);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    axios.get("https://backend.dslcommerce.com/api/category/").then((res) => {
-      setCategories(res.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://backend.dslcommerce.com/api/category/").then((res) => {
+  //     setCategories(res.data);
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    axios.get("https://backend.dslcommerce.com/api/order/").then((res) => {
-      setAllOrder(res.data);
-    });
-  }, []);
-  useEffect(() => {
-    axios.get("https://backend.dslcommerce.com/api/users/all/").then((res) => {
-      setCustomers(res.data);
-    });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("https://backend.dslcommerce.com/api/user-panel/verified/")
-      .then((res) => {
-        setVerifiedMerchants(res.data.result);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("https://backend.dslcommerce.com/api/product/admin/merchants")
-      .then((res) => {
-        setMerchantsProducts(res.data.result);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("https://backend.dslcommerce.com/api/order/data/processing/all")
-      .then((res) => {
-        setProcessingOrder(res.data.result);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://backend.dslcommerce.com/api/order/").then((res) => {
+  //     setAllOrder(res.data);
+  //   });
+  // }, []);
+  // useEffect(() => {
+  //   axios.get("https://backend.dslcommerce.com/api/users/all/").then((res) => {
+  //     setCustomers(res.data);
+  //   });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://backend.dslcommerce.com/api/user-panel/verified/")
+  //     .then((res) => {
+  //       setVerifiedMerchants(res.data.result);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://backend.dslcommerce.com/api/product/admin/merchants")
+  //     .then((res) => {
+  //       setMerchantsProducts(res.data.result);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://backend.dslcommerce.com/api/order/data/processing/all")
+  //     .then((res) => {
+  //       setProcessingOrder(res.data.result);
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    axios.get("https://backend.dslcommerce.com/api/bill-record").then((res) => {
-      setTotalSell(res?.data?.TotalSell);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://backend.dslcommerce.com/api/bill-record").then((res) => {
+  //     setTotalSell(res?.data?.TotalSell);
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    axios
-      .get("https://backend.dslcommerce.com/api/bill-record/week-total")
-      .then((data) => {
-        if (data.status === 200) {
-          console.log(data, "Weekly data");
+  // useEffect(() => {
+  //   axios
+  //     .get("https://backend.dslcommerce.com/api/bill-record/week-total")
+  //     .then((data) => {
+  //       if (data.status === 200) {
+  //         console.log(data, "Weekly data");
 
-          const secondLastWeekSell =
-            data?.data?.WeekResult[data?.data?.WeekResult.length - 2]
-              .totalAmount;
-          const thirdLastWeekSell =
-            data?.data?.WeekResult[data?.data?.WeekResult.length - 3]
-              .totalAmount;
+  //         const secondLastWeekSell =
+  //           data?.data?.WeekResult[data?.data?.WeekResult.length - 2]
+  //             .totalAmount;
+  //         const thirdLastWeekSell =
+  //           data?.data?.WeekResult[data?.data?.WeekResult.length - 3]
+  //             .totalAmount;
 
-          console.log(secondLastWeekSell, thirdLastWeekSell, "Weeks");
+  //         console.log(secondLastWeekSell, thirdLastWeekSell, "Weeks");
 
-          setSecondLastWeekSell(secondLastWeekSell);
-          setThirdLastWeekSell(thirdLastWeekSell);
-        }
-      });
-  }, []);
+  //         setSecondLastWeekSell(secondLastWeekSell);
+  //         setThirdLastWeekSell(thirdLastWeekSell);
+  //       }
+  //     });
+  // }, []);
 
   // useEffect(() => {
   //   console.log("allOrders");
@@ -233,62 +221,9 @@ const AdminDashboard = () => {
               </Card.Body>
             </Card>
           </Col>
-
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-            onClick={handleClickVerifiedMerchants}
-          >
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex align-items-center justify-content-between">
-                <Card.Text className="dashboardTxt">
-                  <p>Verified Merchants</p>
-                  <h2 className="text-start">
-                    {" "}
-                    {verifiedMerchants?.length
-                      ? verifiedMerchants?.length
-                      : "0"}
-                  </h2>
-                </Card.Text>
-                <div className="iconDas">
-                  <p className="text-white coinsIcon ">
-                    <GoVerified />
-                  </p>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-            onClick={handleClickMerchantsProducts}
-          >
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex align-items-center justify-content-between">
-                <Card.Text className="dashboardTxt">
-                  <p>Merchants Products</p>
-                  <h2 className="text-start">
-                    {merchantsProducts?.length
-                      ? merchantsProducts?.length
-                      : "0"}
-                  </h2>
-                </Card.Text>
-                <div className="iconDas">
-                  <p className="text-white coinsIcon ">
-                    <FaProductHunt />
-                  </p>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
         </Row>
 
-        <Row className="g-5 mt-2">
+        {/* <Row className="g-5 mt-2">
           <Col
             xs={12}
             md={6}
@@ -425,7 +360,7 @@ const AdminDashboard = () => {
               </Card.Body>
             </Card>
           </Col>
-        </Row>
+        </Row> */}
         <div className="mt-5">
           <MonthlySellGraph />
         </div>

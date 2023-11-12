@@ -8,7 +8,7 @@ function PageTitle({ title }) {
           <h2 >{title}</h2>
           <ul>
             <li>
-              <Link to={"/"}>Home</Link>
+              <Link to={"/admin"}>Dashboard</Link>
             </li>
             <li className="text-left">{title}</li>
           </ul>
