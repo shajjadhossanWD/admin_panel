@@ -1,0 +1,12 @@
+.customStyle>label {
+  text-transform: uppercase;
+}
+
+.customStyle>label>span {
+  color: rgb(255 90 90)
+}
+
+.customStyle>p,
+.customStyle>ol {
+  color: rgb(76 88 242)
+}

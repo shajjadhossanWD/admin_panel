@@ -1,0 +1,33 @@
+.contactUs {
+  text-decoration: underline !important;
+}
+
+.btn-Sub {
+  background-color:rgb(34, 33, 33) !important;
+  color: rgb(246, 229, 229) !important;
+  border-radius: 5px !important;
+}
+
+.btn-Sub:hover {
+  /* background-color: rgb(8, 8, 41) !important; */
+  background-color: rgb(255, 255, 255) !important;
+  /* color: #fff !important; */
+  border: 1px solid #333 !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+.btn-social-footer {
+  color: rgb(255, 255, 255) !important;
+  background-color: rgb(0, 0, 0) !important;
+  border: 1px solid black;
+  /* border-radius: 50%; */
+
+}
+.btn-social-footer:hover {
+  /* background-color: rgb(8, 8, 41) !important; */
+  background-color: rgb(255, 255, 255) !important;
+  /* color: #fff !important; */
+  color: rgb(0, 0, 0) !important;
+  /* border-radius: 50%; */
+  border: 1px solid black;
+}

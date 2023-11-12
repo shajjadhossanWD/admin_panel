@@ -1,0 +1,147 @@
+.profileDiv {
+    background-color: #303651 !important;
+    padding: 50px;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.handleEditAdminHeight {
+    min-height: 100vh;
+}
+
+.iconBoxBtn {
+    background-color: #232741;
+    /* padding: 6px 20px; */
+    width: 2rem;
+}
+
+.iconCreator {
+    font-size: x-large;
+    background-color: #15182e;
+    border-radius: 5px 0 0 5px;
+    padding: 4px;
+}
+
+.creatorsInput {
+    background-color: transparent;
+    border: 0.2px solid #9a9ead54;
+    width: 80%;
+    border-radius: 0 10px 10px 0;
+    /* color: #000; */
+    color: white;
+}
+
+.creatorsInput1 {
+    background-color: transparent;
+    border: 0.2px solid #9a9ead54;
+    width: 76%;
+    /* color: #abb6bf; */
+    color: white;
+}
+
+.inputProfile {
+    margin-bottom: 1rem;
+}
+
+.ProfileImg {
+    width: 150px;
+    border-radius: 50%;
+    margin: auto !important;
+}
+
+.ImageInput {
+    background-color: transparent;
+    padding: 5px;
+    border: 1px solid #9a9ead54;
+    margin-top: 1rem;
+    color: white;
+}
+
+.imgBtn {
+    background-color: white;
+    color: black;
+    padding: 5px;
+}
+
+.profileBtnChange {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #657eda;
+    margin-top: 1rem;
+    text-decoration: none !important;
+}
+
+.cancelBtn {
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.countryInput {
+    width: 86%;
+    background-color: #303651 !important;
+}
+
+.password_togoler {
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.password_input {
+    border-radius: 0;
+}
+
+.inputWpass {
+    display: flex !important;
+    width: 99%;
+}
+
+.handleEditAdminHeight {
+    width: 98%;
+    margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 670px) {
+    .inputWpass {
+        display: flex !important;
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 624px) {
+    .countryInput {
+        width: 100%;
+        background-color: #303651 !important;
+    }
+
+    .handleEditAdminHeight {
+        min-height: 100vh;
+        margin-bottom: 80px;
+    }
+
+    .creatorsInput1 {
+        background-color: transparent;
+        border: 0.2px solid #9a9ead54;
+        width: 100%;
+        /* color: #abb6bf; */
+        color: white;
+    }
+
+    .creatorsInput {
+        background-color: transparent;
+        border: 0.2px solid #9a9ead54;
+        width: 100%;
+        border-radius: 0 10px 10px 0;
+        /* color: #000; */
+        color: white;
+    }
+
+    .profileDiv {
+        padding: 45px 5px;
+    }
+
+    .ImageInput {
+        margin-top: 1rem;
+        color: white;
+    }
+}

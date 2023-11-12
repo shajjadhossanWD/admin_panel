@@ -1,0 +1,44 @@
+.middle-header-area form .row .select-column .form-group select {
+  background-color: #15407f;
+  color: #fff;
+  height: 50px;
+}
+
+.middle-header-area form .row .select-column .form-group select option {
+  background: #fff;
+  color: #000000;
+  padding-bottom: 5px !important;
+}
+
+.cart_counter {
+  position: absolute !important;
+  visibility: visible !important;
+  right: -6px !important;
+  bottom: 15px !important;
+  width: 20px !important;
+  height: 20px !important;
+  text-align: center !important;
+  line-height: 20px !important;
+  border-radius: 50% !important;
+  background: #ed1d24 !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  transition: .5s !important;
+}
+
+.cartLink:hover .cart_counter {
+  background-color: #136;
+  color: #fff;
+}
+
+.customCat{
+  padding: 0 8px ;
+}
+
+@media only screen and (max-width: 373px) {
+  .customCat {
+    padding: 0 2px ;
+  }
+}
+/*# sourceMappingURL=MiddleHeader.css.map */

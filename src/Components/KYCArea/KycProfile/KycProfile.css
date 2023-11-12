@@ -1,0 +1,10 @@
+.default-width-container {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .default-width-container {
+    width: 90%;
+    margin-inline: auto;
+  }
+}

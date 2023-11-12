@@ -1,0 +1,185 @@
+.imgAdmin {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.adminCard {
+    background-color: #272D47;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.adminBtn {
+    background-color: #6958BE;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    /* margin-left: 0.6rem; */
+    margin-top: 1rem;
+}
+
+.adminDataTable {
+    border: none;
+    overflow: scroll;
+}
+
+.tableRow {
+    padding: 2rem;
+}
+
+.AccessBtn {
+    border: none;
+    background-color: #42C48A;
+    padding: 5px 5px;
+    border-radius: 5px;
+}
+
+.deleteBtn {
+    border-radius: 5px;
+    background-color: #EF5858;
+    padding: 5px 5px;
+    border: none;
+    margin-left: 5px;
+}
+
+.editBtn {
+    border-radius: 5px;
+    background-color: #42C48A;
+    padding: 5px 5px;
+    border: none;
+    margin-left: 3px;
+}
+
+.exclamatoryIcon {
+    color: black;
+    font-size: 3rem;
+}
+
+.delete {
+    background-color: #272D47;
+}
+
+.deleteDiv p {
+    color: white;
+}
+
+.Icon {
+    text-align: center;
+    font-size: 4.5rem;
+    color: #EF5858;
+}
+
+.copyrightAdmin {
+    background-color: #272D47;
+    padding: 10px;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.adminBtnDiv {
+    /* margin-right: 3rem; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.activeLegends {
+    margin-bottom: -1.2rem;
+}
+
+/* .tableNormal{
+    overflow: scroll;
+} */
+
+@media only screen and (max-width: 994px) {
+    .tableNormal {
+        overflow: scroll;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .editBtn {
+        border-radius: 5px;
+        background-color: #42C48A;
+        padding: 5px 5px;
+        border: none;
+        margin-left: -6px;
+    }
+
+    .tableNormal {
+        overflow: scroll;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .tableNormal {
+        overflow: scroll;
+    }
+
+    .adminBtnDiv {
+        margin-right: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title-table-hide {
+        display: none;
+    }
+
+    .AccessBtn {
+        border: none;
+        background-color: #42C48A;
+        padding: 5px 5px;
+        border-radius: 5px;
+        margin-left: 0rem;
+    }
+
+    .editBtn {
+        border-radius: 5px;
+        background-color: #42C48A;
+        padding: 5px 5px;
+        border: none;
+        margin-left: -14px;
+    }
+
+    .deleteBtn {
+        border-radius: 5px;
+        background-color: #EF5858;
+        padding: 5px 5px;
+        border: none;
+        border-top: 2px;
+    }
+
+    .actionDiv {
+        height: 4.1rem;
+        margin-left: 1rem;
+    }
+
+    .action {
+        width: 9rem;
+    }
+
+    .adminHidden {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .adminBtnDiv {
+        margin-right: 1rem;
+    }
+
+}

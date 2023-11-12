@@ -1,0 +1,78 @@
+.addAdminImg {
+    width: 100px;
+    border-radius: 50%;
+}
+
+.modelAddAdmin {
+    /* background: linear-gradient(to right, #02aab0 0%, #00cdac 51%, #02aab0 100%); */
+    background-color: #303651 !important;
+    /* z-index: 100; */
+    padding-top: 40px;
+    padding-right: 50px;
+}
+
+
+.model {
+    padding-top: 40px;
+}
+
+
+
+.dailogueAdmin {
+    background-color: #272d47;
+}
+
+.adminBtnAdd {
+    background-color: #02aab0;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 140px;
+}
+
+.adminBtnAdd11 {
+    background-color: rgb(241, 89, 89);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 140px;
+}
+
+.addAdminImgBtn {
+    background-color: #6958be;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    margin-bottom: 0.5rem;
+}
+
+.addAdminDiv p {
+    color: rgb(177, 185, 195);
+    margin-bottom: -0.2rem;
+    margin-top: 1rem;
+    background-color: #303651 !important;
+}
+
+.handleModalBody {
+    background-color: #303651 !important;
+}
+
+.linkTitle {
+    color: rgb(177, 185, 195);
+}
+
+.addAdminDiv input,
+textarea {
+    background-color: transparent;
+    padding: 6px;
+    border: 1px solid rgb(177, 185, 195);
+    color: rgb(177, 185, 195);
+    border-radius: 5px;
+    width: 100%;
+}

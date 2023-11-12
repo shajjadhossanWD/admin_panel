@@ -1,0 +1,15 @@
+.kyc-phone-number-input-container .PhoneInput {
+  padding-block: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.kyc-phone-number-input-container .PhoneInput .PhoneInputInput {
+  border: 0px;
+}
+.kyc-phone-number-input-container .PhoneInput .PhoneInputInput:focus {
+  outline: none;
+}
+
+.kyc-mobile-verify-button {
+  border: 0px !important;
+}

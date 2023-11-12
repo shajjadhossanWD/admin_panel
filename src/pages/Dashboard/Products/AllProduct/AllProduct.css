@@ -1,0 +1,177 @@
+.imgProduct {
+  width: 60px;
+}
+
+.productCard {
+  background-color: #272d47;
+  border-radius: 10px;
+  overflow: auto;
+  /* min-height: 100vh; */
+}
+
+.productBtn {
+  background-color: #6958be;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  margin-left: 0.6rem;
+  margin-top: 2rem;
+}
+
+.productDataTable {
+  border: none;
+  overflow: scroll;
+}
+
+.tableRow {
+  padding: 2rem;
+}
+
+.AccessBtn {
+  border: none;
+  background-color: #42c48a;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.deleteBtn {
+  border-radius: 5px;
+  background-color: #ef5858;
+  padding: 5px 5px;
+  border: none;
+  margin-left: 5px;
+}
+
+.editBtn {
+  border-radius: 5px;
+  background-color: #42c48a;
+  padding: 5px 5px;
+  border: none;
+  margin-left: 3px;
+}
+
+.viewBtn {
+  border-radius: 5px;
+  background-color: #42c48a;
+  padding: 5px 5px;
+  border: none;
+  margin-left: 3px;
+}
+
+.exclamatoryIcon {
+  color: black;
+  font-size: 3rem;
+}
+
+.delete {
+  background-color: #272d47;
+}
+
+.deleteDiv p {
+  color: white;
+}
+
+.Icon {
+  text-align: center;
+  font-size: 4.5rem;
+  color: #ef5858;
+}
+
+.productBtnDiv {
+  float: right;
+  margin-right: 2rem;
+  display: flex;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.activeLegends {
+  margin-bottom: -1.2rem;
+}
+
+/* .tableNormal{
+    overflow: scroll;
+} */
+
+@media only screen and (max-width: 994px) {
+  .tableNormal {
+    overflow: scroll;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .editBtn {
+    border-radius: 5px;
+    background-color: #42c48a;
+    padding: 5px 5px;
+    border: none;
+    margin-left: -6px;
+  }
+
+  .tableNormal {
+    overflow: scroll;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .tableNormal {
+    overflow: scroll;
+  }
+
+  .title-table-hide {
+    display: none;
+  }
+
+  .AccessBtn {
+    border: none;
+    background-color: #42c48a;
+    padding: 5px 5px;
+    border-radius: 5px;
+    margin-left: 0rem;
+  }
+
+  .editBtn {
+    border-radius: 5px;
+    background-color: #42c48a;
+    padding: 5px 5px;
+    border: none;
+    margin-left: -14px;
+  }
+
+  .deleteBtn {
+    border-radius: 5px;
+    background-color: #ef5858;
+    padding: 5px 5px;
+    border: none;
+    border-top: 2px;
+  }
+
+  .actionDiv {
+    height: 4.1rem;
+    margin-left: 1rem;
+  }
+
+  .action {
+    width: 9rem;
+  }
+
+  .productHidden {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .productBtnDiv {
+    float: right;
+
+    margin-right: 1rem;
+  }
+}

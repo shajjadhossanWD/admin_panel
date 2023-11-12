@@ -1,0 +1,17 @@
+.slick-prev {
+  left: 0 !important;
+  /* background-color: black !important; */
+}
+.slick-list {
+  margin-inline: 20px !important;
+}
+
+.slick-next {
+  right: 0 !important;
+  /* background-color: black !important; */
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+}

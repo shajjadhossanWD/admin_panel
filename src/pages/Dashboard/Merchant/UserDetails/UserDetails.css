@@ -1,0 +1,17 @@
+.svgColor svg {
+    color: white !important;
+}
+
+#rightMark {
+    color: green !important;
+}
+
+.uBtn {
+    width: 100% !important;
+}
+
+@media only screen and (max-width: 700px) {
+    .uBtn {
+        width: 50% !important;
+    }
+}

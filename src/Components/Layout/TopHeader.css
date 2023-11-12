@@ -1,0 +1,42 @@
+.top-header-area {
+  background-color: #136;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.top-header-area .container .top-header-content span {
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.top-header-area .logout-btn {
+  border: none;
+  background: #113366;
+  color: #fff;
+  cursor: pointer;
+}
+/*# sourceMappingURL=TopHeader.css.map */
+/* ------------------------------------- */
+
+.shippingMessage{
+  padding-top: 10px !important;
+}
+.ColorBg {
+  background-image: linear-gradient(90deg,#0b545d,#057481)!important;
+}
+
+@media only screen and (max-width: 425px) {
+  .shippingMessage{
+    padding-top: 2px !important;
+  }
+  .top-header-area .container .top-header-content span {
+    font-size: 12px;
+    color: #fff;
+    font-weight: 400;
+  }
+}
+
+
+/* ----------------------------------------- */
+
