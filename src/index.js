@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import store from "./redux/Store";
 import App from "./App";
 import AdminProvider from "./contexts/AdminContext";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 
 
@@ -25,4 +24,3 @@ root.render(
   </React.StrictMode>
 );
 
-reportWebVitals();

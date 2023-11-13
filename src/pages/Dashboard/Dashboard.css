@@ -4,7 +4,6 @@
 
 .sideBar {
   background-color: #272d47;
-  /* min-height: 100%; */
   text-align: center;
   padding-bottom: 20px;
   min-height: 100vh;
@@ -193,44 +192,6 @@
 .logoutBtn {
   cursor: pointer;
 }
-
-.dashboardSubmenu {
-  display: flex;
-}
-
-.dashboardSubmenu1 {
-  display: flex;
-  margin-top: -1.5rem;
-  margin-bottom: -1.5rem;
-}
-
-.mintMenu {
-  margin-left: 12px;
-  font-size: 0.95rem;
-}
-
-.mintMenu1 {
-  margin-left: 12px;
-  font-size: 0.95rem;
-  color: rgb(230, 75, 75);
-}
-
-.subMenu {
-  margin-right: -4rem;
-}
-
-/* titles registered  */
-.titlesregistered {
-  height: 100vh;
-}
-
-.titleMinted {
-  height: auto;
-}
-
-
-
-
 
 @media only screen and (max-width: 2100px) {
   .imgDashDiv img {
