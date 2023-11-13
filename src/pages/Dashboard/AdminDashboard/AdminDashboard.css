@@ -24,9 +24,7 @@
   min-height: 140px;
 }
 
-svg {
-  /* color: black; */
-}
+
 
 .demoP {
   visibility: hidden;
@@ -86,6 +84,17 @@ svg {
   color: #fff;
 }
 
+.productCard {
+  background-color: #272d47;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.productDataTable {
+  border: none;
+  overflow: scroll;
+}
+
 @media only screen and (max-width: 994px) {
   .dashboardDiv {
     background-color: #1a1c33;
@@ -95,5 +104,21 @@ svg {
 
   .coinsIcon {
     padding-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 994px){
+  .tableNormal {
+      overflow: scroll;
+  }
+}
+@media only screen and (max-width: 820px){
+  .tableNormal {
+      overflow: scroll;
+  }
+}
+@media only screen and (max-width: 500px){
+  .tableNormal {
+      overflow: scroll;
   }
 }
