@@ -158,21 +158,7 @@ const AdminDashboard = () => {
         <h5 className="text-white text-start pb-3">DASHBOARD</h5>
 
         <Row className="g-5">
-          <Col xs={12} md={6} lg={4} xl={3} onClick={handleClickOpenAdmin}>
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex align-items-center justify-content-between">
-                <Card.Text className="dashboardTxt">
-                  <p>Admins</p>
-                  <h2 className="text-start">{allAdmin.length}</h2>
-                </Card.Text>
-                <div className="iconDas">
-                  <p className="text-white coinsIcon ">
-                    <RiAdminFill />
-                  </p>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+         
 
           <Col xs={12} md={6} lg={4} xl={3} onClick={handleClickOpenCustomers}>
             <Card className="cardDash " style={{ borderRadius: "20px" }}>
@@ -190,21 +176,7 @@ const AdminDashboard = () => {
             </Card>
           </Col>
 
-          <Col xs={12} md={6} lg={4} xl={3} onClick={handleClickOpenProducts}>
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex align-items-center justify-content-between">
-                <Card.Text className="dashboardTxt">
-                  <p>Products</p>
-                  <h2 className="text-start">{products.length}</h2>
-                </Card.Text>
-                <div className="iconDas">
-                  <p className="text-white coinsIcon ">
-                    <FaProductHunt />
-                  </p>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+          
 
           <Col xs={12} md={6} lg={4} xl={3} onClick={handleClickOpenCategories}>
             <Card className="cardDash " style={{ borderRadius: "20px" }}>
@@ -223,144 +195,6 @@ const AdminDashboard = () => {
           </Col>
         </Row>
 
-        {/* <Row className="g-5 mt-2">
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-            onClick={() => handleClickOpenOrders("")}
-          >
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex gap-1 align-items-center justify-content-between">
-                <div className="iconDas">
-                  <p>
-                    <FaShoppingCart className="orderIcon setBg1" />
-                  </p>
-                </div>
-                <Card.Text className="">
-                  <p className="text-white-50 p-0 m-0">Total Order</p>
-                  <h2 className="text-right text-white">{allOrder?.length}</h2>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-            onClick={() => handleClickOpenOrders("pending")}
-          >
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex gap-1 align-items-center justify-content-between">
-                <div className="iconDas">
-                  <p>
-                    <SiProcesswire className="orderIcon setBg2" />
-                  </p>
-                </div>
-                <Card.Text className="">
-                  <p className="text-white-50 p-0 m-0">Order Pending</p>
-                  <h2 className="text-right text-white">
-                    {
-                      allOrder.filter((item) => item.pendingStatus === true)
-                        .length
-                    }
-                  </h2>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-            onClick={() => handleClickOpenOrders("processing")}
-          >
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex gap-2 align-items-center justify-content-between">
-                <div className="iconDas">
-                  <p>
-                    <GiRoundStar className="orderIcon setBg4" />
-                  </p>
-                </div>
-                <Card.Text className="">
-                  <p className="text-white-50 p-0 m-0">Order Processing</p>
-                  <h2 className="text-right text-white">
-                    {processingOrder?.length ? processingOrder?.length : "0"}
-                  </h2>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-            onClick={() => handleClickOpenOrders("delivered")}
-          >
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex gap-2 align-items-center justify-content-between">
-                <div className="iconDas">
-                  <p>
-                    <GiCheckMark className="orderIcon setBg4" />
-                  </p>
-                </div>
-                <Card.Text className="">
-                  <p className="text-white-50 p-0 m-0">Order Delivered</p>
-                  <h2 className="text-right text-white">
-                    {
-                      allOrder.filter((item) => item.deliveredStatus === true)
-                        .length
-                    }
-                  </h2>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xl={3}
-            onClick={() => handleClickOpenOrders("")}
-          >
-            <Card className="cardDash " style={{ borderRadius: "20px" }}>
-              <Card.Body className="d-flex gap-2 align-items-center justify-content-between">
-                <div className="iconDas">
-                  <p>
-                    <RiMoneyDollarBoxLine className="orderIcon setBg4" />
-                  </p>
-                </div>
-                <Card.Text className="">
-                  <p className="text-white-50 text-right p-0 m-0">
-                    Total sell{" "}
-                    {secondLastWeekSell > thirdLastWeekSell ? (
-                      <TrendingUpIcon htmlColor="#28a745" fontSize="small" />
-                    ) : (
-                      <TrendingDownIcon htmlColor="#dc3545" fontSize="small" />
-                    )}
-                  </p>
-                  <h2
-                    className={`text-right ${
-                      secondLastWeekSell > thirdLastWeekSell
-                        ? "text-success"
-                        : "text-danger"
-                    }`}
-                  >
-                    ${totalSell.toFixed(2)}
-                  </h2>
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row> */}
         <div className="mt-5">
           <MonthlySellGraph />
         </div>

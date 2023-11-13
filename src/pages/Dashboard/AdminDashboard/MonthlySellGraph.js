@@ -12,20 +12,18 @@ import {
 
 const MonthlySellGraph = () => {
   const data = [
-    { "totalAmount": 60.27, "week": "Week " +  52 },
-    { "totalAmount": 30.27, "week": "Week " +  1 },
-    { "totalAmount": 20.27, "week": "Week " +  2 },
-    { "totalAmount": 20.27, "week": "Week " +  3 },
-    { "totalAmount": 40.27, "week": "Week " +  4 },
-    { "totalAmount": 20.27, "week": "Week " +  5 },
-    { "totalAmount": 45.27, "week": "Week " +  6 },
-    { "totalAmount": 40.27, "week": "Week " +  7 },
-    { "totalAmount": 30.27, "week": "Week " +  8 },
-    { "totalAmount": 50.27, "week": "Week " +  9 },
-    { "totalAmount": 40.27, "week": "Week " +  10 },
-    { "totalAmount": 20.27, "week": "Week " +  11},
-    { "totalAmount": 30.27, "week": "Week " +  12 },
-    { "totalAmount": 10.27, "week": "Week " +  13 },
+    { "score": 30.27, "month": "January " },
+    { "score": 20.27, "month": "February " },
+    { "score": 20.27, "month": "March " },
+    { "score": 40.27, "month": "April " },
+    { "score": 20.27, "month": "May " },
+    { "score": 45.27, "month": "June " },
+    { "score": 40.27, "month": "July " },
+    { "score": 30.27, "month": "August " },
+    { "score": 50.27, "month": "Semtember " },
+    { "score": 40.27, "month": "October " },
+    { "score": 20.27, "month": "November " },
+    { "score": 30.27, "month": "December " },
   ]
 
   // const [data, setData] = useState([]);
@@ -60,7 +58,7 @@ const MonthlySellGraph = () => {
 
   return (
     <div>
-      <div style={{ height: 400 }}>
+      <div style={{ height: 400, marginLeft: '-30px'}}>
         <ResponsiveContainer>
           <AreaChart
             data={data}
@@ -72,19 +70,19 @@ const MonthlySellGraph = () => {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="week" />
+            <XAxis dataKey="month" />
             <YAxis />
             <Tooltip formatter={(label) => "$" + label} />
             <Area
               type="monotone"
-              dataKey="totalAmount"
+              dataKey="score"
               stroke="#8884d8"
               fill="#8884d8"
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
-      <h3 className="text-center mt-4 text-white">Weekly sell</h3>
+      <h3 className="text-center mt-4 text-white">Financial Health Indicator</h3>
     </div>
   );
 };

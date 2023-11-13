@@ -13,19 +13,8 @@ import "./Dashboard.css";
 import { Divider } from "@mui/material";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import { AdminContext } from "../../contexts/AdminContext";
-import { FaUsers, FaProductHunt } from "react-icons/fa";
-import { MdDashboard, MdCategory, MdOutlineUnsubscribe } from "react-icons/md";
-import { RiAdminFill } from "react-icons/ri";
-import { GiShoppingBag } from "react-icons/gi";
-import { BsMinecartLoaded } from "react-icons/bs";
+import { MdDashboard, MdCategory } from "react-icons/md";
 import { useEffect } from "react";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { useRef } from "react";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import Menu from "@mui/material/Menu";
 
 const menuLinkStyles = ({ isActive }) => {
   return {
@@ -37,7 +26,6 @@ const drawerWidth = 280;
 function Dashboard(props) {
   const { admin, logout } = React.useContext(AdminContext);
   const navigate = useNavigate();
-  const [kycMenu, setKycMenu] = useState("");
 
   useEffect(() => {
     if (admin?.role !== "admin") {
@@ -47,14 +35,13 @@ function Dashboard(props) {
 
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [hide, setHide] = useState(false);
-
   const date = new Date();
   const year = date.getFullYear();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
   const handleClose = () => {
     setMobileOpen(false);
   };
@@ -64,38 +51,14 @@ function Dashboard(props) {
     navigate("/");
   };
 
-  const handleChange = (event) => {
-    setKycMenu(event.target.value);
-  };
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose2 = () => {
-    handleClose();
-    setAnchorEl(null);
-  };
-
-  const [anchorEl3, setAnchorEl3] = useState(null);
-
-  const open = Boolean(anchorEl);
-  const open3 = Boolean(anchorEl3);
 
 
-  const handleClick3 = (event) => {
-    setAnchorEl3(event.currentTarget);
-  };
-  const handleClose3 = () => {
-    handleClose();
-    setAnchorEl3(null);
-  };
-
+  
   const drawer = (
     <div className="sideBar">
       <Toolbar />
-      {/* <img className="dashLogo mx-auto" src='' alt="" /> */}
-      <h5 className="text-white mb-5">Fundbox</h5>
+      <img className="dashLogo mx-auto" src='https://i.ibb.co/ZxWjB4s/Fundbox-reverse.webp' alt="" />
+      {/* <h5 className="text-white mb-5">Fundbox</h5> */}
       {/* <Divider /> */}
       <div className="menuDiv text-uppercase">
         <NavLink
@@ -110,155 +73,6 @@ function Dashboard(props) {
           DASHBOARD
         </NavLink>
         <br />
-
-        {/* <NavLink
-          className="dashboardMenu"
-          style={menuLinkStyles}
-          onClick={handleClose}
-          to="adminUser"
-        >
-          {" "}
-          <span className="navIconAdmin">
-            <RiAdminFill style={{ fontSize: "20px" }} />
-          </span>
-          ADMINS
-        </NavLink>
-        <br /> */}
-
-        {/* <NavLink
-          className="dashboardMenu"
-          style={menuLinkStyles}
-          onClick={handleClose}
-          to="customers"
-        >
-          {" "}
-          <span className="navIconAdmin">
-            <FaUsers style={{ fontSize: "20px" }} />
-          </span>
-          Customers
-        </NavLink> */}
-
-        {/* <div>
-          <NavLink
-            id="demo-positioned-button"
-            aria-controls={open ? "demo-positioned-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-            style={{ color: "#BABBC0", cursor: "pointer" }}
-            sx={{ color: "#BABBC0" }}
-          >
-            <span className="navIconAdmin">
-              <MdOutlineUnsubscribe style={{ fontSize: "20px" }} />
-            </span>
-            MERCHANTS
-            <ArrowDropDownIcon />
-          </NavLink>
-
-
-          <Menu
-            id="demo-positioned-menu"
-            aria-labelledby="demo-positioned-button"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose2}
-          >
-            <Link onClick={handleClose2} to="verified">
-              <MenuItem sx={{ color: "black" }} value={10}>
-                Verified{" "}
-              </MenuItem>
-            </Link>
-            <Link onClick={handleClose2} to="non-verified">
-              <MenuItem sx={{ color: "black" }} value={20}>
-                Non Verified
-              </MenuItem>
-            </Link>
-            <Link onClick={handleClose2} to="pending">
-              <MenuItem sx={{ color: "black" }} value={30}>
-                Pending
-              </MenuItem>
-            </Link>
-            <Link onClick={handleClose2} to="added-products">
-              <MenuItem sx={{ color: "black" }} value={40}>
-                Added products
-              </MenuItem>
-            </Link>
-          </Menu>
-        </div> */}
-
-        {/* <div>
-          <NavLink
-            id="demo-positioned-button"
-            aria-controls={open3 ? "demo-positioned-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open3 ? "true" : undefined}
-            onClick={handleClick3}
-            style={{ color: "#BABBC0", cursor: "pointer" }}
-            sx={{ color: "#BABBC0" }}
-          >
-            <span className="navIconAdmin">
-              <FaProductHunt style={{ fontSize: "20px" }} />
-            </span>
-            PRODUCTS
-            <ArrowDropDownIcon />
-          </NavLink>
-
-
-          <Menu
-            id="demo-positioned-menu"
-            aria-labelledby="demo-positioned-button"
-            anchorEl={anchorEl3}
-            open={open3}
-            onClose={handleClose3}
-          >
-            <Link onClick={handleClose3} to="products">
-              <MenuItem sx={{ color: "black" }} value={10}>
-                ADD PEODUCTS
-              </MenuItem>
-            </Link>
-            <Link onClick={handleClose3} to="featuredProducts">
-              <MenuItem sx={{ color: "black" }} value={30}>
-                FEATURED PRODUCTS
-              </MenuItem>
-            </Link>
-            <Link onClick={handleClose3} to="banners">
-              <MenuItem sx={{ color: "black" }} value={30}>
-                ADD BANNER
-              </MenuItem>
-            </Link>
-
-          </Menu>
-        </div> */}
-{/* 
-        <NavLink
-          className="dashboardMenu"
-          style={menuLinkStyles}
-          onClick={handleClose}
-          to="orders"
-        >
-          {" "}
-          <span className="navIconAdmin">
-            <GiShoppingBag style={{ fontSize: "20px" }} />
-          </span>
-          CUSTOMER ORDERS
-        </NavLink> */}
-        {/* <br /> */}
-
-        {/* <NavLink
-          className="dashboardMenu"
-          style={menuLinkStyles}
-          onClick={handleClose}
-          to="administer-orders"
-        >
-          {" "}
-          <span className="navIconAdmin">
-            <BsMinecartLoaded style={{ fontSize: "20px" }} />
-          </span>
-          Administer Orders
-        </NavLink>
-        <br /> */}
-
-
         <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
@@ -271,18 +85,6 @@ function Dashboard(props) {
           CATEGORIES
         </NavLink>
         <br />
-        {/* <NavLink
-          className="dashboardMenu"
-          style={menuLinkStyles}
-          onClick={handleClose}
-          to="all-subscribers"
-        >
-          <span className="navIconAdmin">
-            <MdOutlineUnsubscribe style={{ fontSize: "20px" }} />
-          </span>
-          ALL SUBSCRIBERS
-        </NavLink>
-        <br /> */}
 
         <Button
           variant="danger"
@@ -310,7 +112,6 @@ function Dashboard(props) {
       <AppBar
         position="fixed"
         sx={{
-          // width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
       >
@@ -345,7 +146,6 @@ function Dashboard(props) {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
           container={container}
           variant="temporary"
