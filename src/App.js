@@ -7,18 +7,20 @@ import PublicLayout from "./Components/Layout/PublicLayout";
 import { Toaster } from "react-hot-toast";
 // Login
 import Login from "./pages/Authentications/Login";
-import Register from "./pages/Authentications/Register";
-import ForgetPassword from "./Components/Auth/ForgetPassword";
-import Otp from "./Components/Auth/Otp";
-
 // Dashboard
 import Dashboard from "./pages/Dashboard/Dashboard";
 import AdminDashboard from "./pages/Dashboard/AdminDashboard/AdminDashboard";
-import AllCategory from "./pages/Dashboard/Category/AllCategory/AllCategory";
-import AddCategory from "./pages/Dashboard/Category/AddCategory/AddCategory";
 import AdminRoutes from "./Components/AdminRoute/AdminRoutes";
-import AdminResetPassword from "./Components/Auth/AdminResetPassword";
 import Loader from "./Components/Shared/Loader";
+import AllBookings from "./pages/Dashboard/Bookings/AllBooking/AllBookings";
+import Admins from "./pages/Dashboard/Admins/Admins";
+import Users from "./pages/Dashboard/Users/Users";
+import Attention from "./pages/Dashboard/Attention/Attention";
+import TodayBookings from "./pages/Dashboard/Bookings/AllBooking/TodayBookings";
+import ViewBookingsData from "./pages/Dashboard/Bookings/AllBooking/ViewBookingsData";
+import HomePage from "./pages/HomePages/HomePage";
+import PrivacyPolicy from "./pages/HomePages/PrivacyPolicy";
+import SendDeleteRequest from "./pages/HomePages/SendDeleteRequest";
 
 
 
@@ -52,25 +54,17 @@ function App() {
      
       <Routes>
         <Route path="/" element={<PublicLayout />}>
-          <Route index element={<Login />} />
+          <Route index element={<HomePage />} />
         </Route>
 
         {/*************************** Login System ****************************** */}
-        <Route path="/admin/login" element={<Login />} />
-        <Route path="/admin/register" element={<Register />} />
-        <Route
-          path="/admin/login/forgetPassword"
-          element={<ForgetPassword />}
-        />
-        <Route
-          path="/admin/login/resetPassword/:token"
-          element={<AdminResetPassword />}
-        />
-        /admin
-        <Route
-          path="/admin/otp/:token"
-          element={<Otp expiryTimestamp={time} />}
-        />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/send-delete-request" element={<SendDeleteRequest />} />
+        <Route path="/login" element={<Login />} />
+      
+       
+       
         
         {/*************************** Dashboard Start************************** */}
         <Route
@@ -83,13 +77,16 @@ function App() {
         >
           <Route index element={<AdminDashboard />} />
           <Route path="dashboard" element={<AdminDashboard />} />
-          {/*************************** Category  ***************************/}
-          <Route path="all-category" element={<AllCategory />} />
+          {/*************************** bookings  ***************************/}
+          <Route path="all-admin" element={<Admins />} />
+          <Route path="users" element={<Users />} />
+          <Route path="all-bookings" element={<AllBookings />} />
+          <Route path="today-bookings" element={<TodayBookings />} />
+          <Route path="attention" element={<Attention />} />
           <Route
-            path="all-category/:categoryPerPage"
-            element={<AllCategory />}
+            path="all-bookings/:id"
+            element={<ViewBookingsData />}
           />
-          <Route path="add-category" element={<AddCategory />} />
         </Route>
         {/*************************** Dashboard End************************** */}
       </Routes>

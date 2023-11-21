@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+import logo from "./kccb_logo.png"
+
 function PageTitle({ title }) {
   return (
     <div className="page-title-area">
@@ -8,9 +10,12 @@ function PageTitle({ title }) {
           <h2 >{title}</h2>
           <ul>
             <li>
-              <Link to={"/admin"}>Dashboard</Link>
+            <img
+              className="logoKccb"
+              src={logo}
+              alt="kccb-logo"
+            />
             </li>
-            <li className="text-left">{title}</li>
           </ul>
         </div>
       </div>

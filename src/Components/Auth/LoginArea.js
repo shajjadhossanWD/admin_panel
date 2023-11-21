@@ -1,78 +1,55 @@
 import React, { useRef, useState, useContext, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
-
-// import AuthContext from "../../contexts/auth-context";
 import { AdminContext } from "../../contexts/AdminContext";
 import axios from "axios";
 import swal from "sweetalert";
 
-function LoginArea({ customClass = "" }) {
+function LoginArea() {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const [email, setEmail] = useState("");
   const password = useRef();
-  const [alertMsg, setAlertMsg] = useState(null);
-  // const context = useContext(AuthContext);
-  const { admin, token, isAuthenticating, login } = useContext(AdminContext);
+  const {  setAdmin, setIsAuthenticating, setToken } = useContext(AdminContext);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isAuthenticating) {
-      navigate(`/admin/otp/${token}`, { replace: true });
-    }
-    if (admin?._id) {
-      navigate("/admin", { replace: true });
-    }
-  }, [admin, navigate, isAuthenticating, token]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     const password = e.target.password.value;
-    // console.log(email);
-    // console.log(password);
-    login(email, password);
+
+    axios
+      .post(
+        `https://kccb.kvillagebd.com/api/v1/admin/login`, {email, password})
+
+      .then((res) => {
+        if (res.status === 200) {
+          setAdmin(res.data.admin);
+          setToken(res.data.token);
+          setIsAuthenticating(true);
+          localStorage.setItem("kccbAdminToken", res.data.token);
+          navigate("/admin/dashboard");
+        }
+      })
+      .catch((err) => {
+        swal({
+          text: err.response.data.message,
+          icon: "warning",
+          button: "OK!",
+          className: "modal_class_success",
+        });
+      });
   };
 
+
+  
+
   return (
-    <div
-      className={"login-form " + customClass}
-      style={{ backgroundColor: "#d1d1d1" }}
-    >
-      {alertMsg &&
-        (Array.isArray(alertMsg) ? (
-          <div className="alert alert-danger" role="alert">
-            <ul className="errors" style={{ marginBottom: 0 }}>
-              {alertMsg.map((msg) => (
-                <li key={msg} className="error">
-                  {msg}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : (
-          <div className={`alert alert-success`} role="alert">
-            {alertMsg}
-          </div>
-        ))}
-      <div className="mx-auto text-center">
-        <img
-          style={{
-            width: "80px",
-            marginTop: "-20px",
-          }}
-          src="https://testnet.grighund.net/static/media/logo192.ea779dfe5e580c22a76f.png"
-          className="handleLogoLogin"
-          alt="logo"
-        />
-
-        <span className="text-center mt-4 loginTag "></span>
-
-        {/* <h2 className=" ">Login</h2> */}
-      </div>
+    <div className="login-form loginform" >
+  
+        <h2 className=" ">Login</h2>
 
       <form onSubmit={handleLogin}>
         <InputGroup className="mb-3 mt-5">
@@ -104,41 +81,19 @@ function LoginArea({ customClass = "" }) {
             style={{ cursor: "pointer" }}
           >
             {visiblePassword ? (
-              <AiOutlineEye style={{ fontSize: "20px" }} />
+              <AiOutlineEye style={{ fontSize: "20px", color: "white" }} />
             ) : (
-              <AiOutlineEyeInvisible style={{ fontSize: "20px" }} />
+              <AiOutlineEyeInvisible style={{ fontSize: "20px", color: "white" }} />
             )}
           </InputGroup.Text>
         </InputGroup>
 
-        <div className="row align-items-center">
-          <div className="col-lg-6 col-md-6 col-sm-6 lost-your-password text-left">
-            <a href="login/forgetPassword" className="lost-your-password">
-              Forgot your password?
-            </a>
-          </div>
-          <div className="col-lg-6 col-md-6 col-sm-6">
-            {/* <div className="form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="checkme"
-              />
-              <label className="form-check-label" htmlFor="checkme">
-                Remember me
-              </label>
-            </div> */}
-          </div>
-        </div>
+      
 
         <button type="submit">Login</button>
       </form>
 
-      {/* <div className="important-text">
-        <p>
-          Don't have an account? <Link to="/admin/register">Register now!</Link>
-        </p>
-      </div> */}
+
     </div>
   );
 }

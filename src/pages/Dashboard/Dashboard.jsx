@@ -10,11 +10,17 @@ import Button from "react-bootstrap/Button";
 import Typography from "@mui/material/Typography";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
-import { Divider } from "@mui/material";
+import logo from "./logo.png";
+import { AiFillAlert } from "react-icons/ai";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import { AdminContext } from "../../contexts/AdminContext";
 import { MdDashboard, MdCategory } from "react-icons/md";
 import { useEffect } from "react";
+import {
+  RiAdminFill,
+} from "react-icons/ri";
+import { FaUsers } from "react-icons/fa";
+import { TbBrandBooking } from "react-icons/tb";
 
 const menuLinkStyles = ({ isActive }) => {
   return {
@@ -57,10 +63,10 @@ function Dashboard(props) {
   const drawer = (
     <div className="sideBar">
       <Toolbar />
-      <img className="dashLogo mx-auto" src='https://i.ibb.co/ZxWjB4s/Fundbox-reverse.webp' alt="" />
-      {/* <h5 className="text-white mb-5">Fundbox</h5> */}
+      <img className="dashLogo mx-auto" src={logo} alt="" />
       {/* <Divider /> */}
       <div className="menuDiv text-uppercase">
+
         <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
@@ -73,28 +79,76 @@ function Dashboard(props) {
           DASHBOARD
         </NavLink>
         <br />
+
         <NavLink
           className="dashboardMenu"
           style={menuLinkStyles}
           onClick={handleClose}
-          to="all-category"
+          to="all-admin"
         >
           <span className="navIconAdmin">
-            <MdCategory style={{ fontSize: "20px" }} />
+            <RiAdminFill style={{ fontSize: "20px" }} />
           </span>
-          CATEGORIES
+          ADMINS
         </NavLink>
         <br />
 
-        <Button
-          variant="danger"
-          onClick={() => handleLogout()}
-          className="mt-3 mb-5  text-uppercase ms-3 w-75"
-          style={{ fontSize: "1rem" }}
-          size="lg"
+
+        <NavLink
+          className="dashboardMenu"
+          style={menuLinkStyles}
+          onClick={handleClose}
+          to="users"
         >
-          Log Out
-        </Button>
+          <span className="navIconAdmin">
+            <FaUsers style={{ fontSize: "20px" }} />
+          </span>
+          USERS
+        </NavLink>
+        <br />
+
+        <NavLink
+          className="dashboardMenu"
+          style={menuLinkStyles}
+          onClick={handleClose}
+          to="all-bookings"
+        >
+          <span className="navIconAdmin">
+            <TbBrandBooking style={{ fontSize: "20px" }} />
+          </span>
+          BOOKINGS
+        </NavLink>
+        <br />
+
+        <NavLink
+          className="dashboardMenu"
+          style={menuLinkStyles}
+          onClick={handleClose}
+          to="attention"
+        >
+          <span className="navIconAdmin">
+            <AiFillAlert style={{ fontSize: "20px" }} />
+          </span>
+          ATTENTION
+        </NavLink>
+        <br />
+
+        <div className="adminInfoDiv">
+         <p className="text-white coinsIcon ">
+           <RiAdminFill />
+          </p>
+          <p className="text-white">{admin?.name}</p>
+
+          <Button
+            variant="danger"
+            onClick={() => handleLogout()}
+            className=" mb-5  text-uppercase w-75"
+            style={{ fontSize: "1rem" }}
+            size="lg"
+          >
+            Log Out
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -195,9 +249,7 @@ function Dashboard(props) {
           <div className="outletContainer">
             <Outlet />
           </div>
-          <div className="copyrightAdmin mt-4 ">
-            <p className="my-2">Copyright © {year} - DS Legends Pte. Ltd.</p>
-          </div>
+         
         </div>
       </Box>
     </Box>

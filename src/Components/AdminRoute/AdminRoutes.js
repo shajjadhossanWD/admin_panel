@@ -5,13 +5,14 @@ import { AdminContext } from '../../contexts/AdminContext';
 const AdminRoutes = ({ children }) => {
     const { admin } = useContext(AdminContext);
     let location = useLocation();
-    // console.log(admin.role)
+    console.log(admin)
 
-    if (admin?.role === "admin") {
+    if (admin?._id) {
         <Navigate to="/admin/dashboard" state={{ from: location }} />
+        console.log(admin?._id)
         return children;
     }
-    return <Navigate to="/admin/login" state={{ from: location }} />;
+    return <Navigate to="/login" state={{ from: location }} />;
 };
 
 export default AdminRoutes;

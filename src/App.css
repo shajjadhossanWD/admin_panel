@@ -7,6 +7,89 @@
   position: relative;
 }
 
+.bannerDivv {
+  height: 90vh;
+}
+
+.banner {
+  background-image: url("./billiard.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 240px 0;
+  z-index: 1;
+  position: relative;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background: rgba(13, 12, 12, 0.164);
+  z-index: -1;
+
+}
+
+.banner-btn button {
+  background: linear-gradient(90deg, #330000 0%, #F9975B 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 10px 0;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  border: 0px;
+  min-width: 200px;
+  transition: 1s all ease-in-out;
+}
+
+.banner-btn button:hover {
+  background: linear-gradient(90deg, #F9975B 0%, #330000 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.banner-btn button:nth-child(1) {
+  margin-right: 20px;
+}
+
+.banner-wrapper {
+  text-align: center;
+
+}
+
+.banner-text {
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+.banner-text h6 {
+  margin: 15px 0 50px 0;
+  font-size: 24px;
+}
+
+.banner-text h1 {
+  font-size: 96px;
+  background-image: url("https://i.ibb.co/gZDYdZc/nmn-1.png");
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  -webkit-font-smoothing: antialiased;
+  filter: drop-shadow(-4px 6px 4px #000000);
+}
+
+.banner-text h4 {
+  font-size: 42px;
+}
+
+
 .upperArrowIcon {
   border-radius: 35px;
   position: fixed;
@@ -94,3 +177,97 @@
 }
 
 
+
+
+
+@media (max-width: 992px) {
+
+  .banner-text h6 {
+      margin: 15px 0 50px 0;
+      font-size: 18px;
+  }
+
+  .banner-text h1 {
+      font-size: 76px;
+      letter-spacing: normal;
+  }
+
+  .banner-text h4 {
+      font-size: 32px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .banner-text h6 {
+      margin: 15px 0 30px 0;
+      font-size: 16px;
+  }
+
+  .banner-text h1 {
+      font-size: 56px;
+      letter-spacing: normal;
+  }
+
+  .banner-text h4 {
+      font-size: 28px;
+  }
+
+  .banner-btn button {
+      padding: 7px 0;
+      font-size: 16px;
+      min-width: 150px;
+  }
+
+
+}
+
+@media (max-width: 576px) {
+  .banner {
+      padding: 180px 0;
+  }
+
+  .banner-text h6 {
+      font-size: 14px;
+  }
+
+  .banner-text h1 {
+      font-size: 46px;
+      letter-spacing: normal;
+  }
+
+  .banner-text h4 {
+      font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-text h6 {
+      font-size: 14px;
+      margin: 10px 0 30px 0;
+  }
+
+  .banner-text h1 {
+      font-size: 38px;
+      letter-spacing: normal;
+
+  }
+
+  .banner-text h4 {
+      font-size: 22px;
+  }
+
+  .banner-btn button:nth-child(1) {
+      margin-right: 0px;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 361px) {
+  .banner-text h1 {
+      font-size: 35px;
+
+  }
+}
