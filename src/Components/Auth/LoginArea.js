@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import { AdminContext } from "../../contexts/AdminContext";
 import axios from "axios";
 import swal from "sweetalert";
+
 
 function LoginArea() {
   const [visiblePassword, setVisiblePassword] = useState(false);
@@ -42,7 +43,6 @@ function LoginArea() {
         });
       });
   };
-
 
   
 

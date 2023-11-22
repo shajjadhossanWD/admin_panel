@@ -4,10 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import { RiAdminFill } from "react-icons/ri";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-import "./Admins.css";
+import "../../Admins/Admins.css";
 import swal from "sweetalert";
 
-const AddAdminModel = (props) => {
+const AdBookingsModel = (props) => {
   const {
     setModalShowNewAdmin,
     refetch,
@@ -16,6 +16,7 @@ const AddAdminModel = (props) => {
   
   const [value, setValue] = useState();
   const [email, setEmail] = useState("");
+  const [guest, setGuest] = useState(0);
 
 
   const subNewAdmin = async (event) => {
@@ -89,7 +90,7 @@ const AddAdminModel = (props) => {
           id="contained-modal-title-vcenter"
           className="fs-5 text-light"
         >
-          <RiAdminFill className="fs-4"></RiAdminFill> Add Admin
+          <RiAdminFill className="fs-4"></RiAdminFill> Add Booking
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="handleModalBody">
@@ -122,40 +123,23 @@ const AddAdminModel = (props) => {
                     }
                   />
 
-                  <p className="mb-1">Phone</p>
-                  <PhoneInput
-                    international
-                    defaultCountry="BD"
-                    countryCallingCodeEditable={true}
-                    className="form-control handleModalBody"
-                    type="text"
-                    value={value}
-                    onChange={setValue}
-                    required
-                    inputProps={{
-                      name: "phone",
-                      required: true,
-                      autoFocus: true,
-                    }}
-                  />
-
-                  <p className="mb-1">Password</p>
+                  <p className="mb-1">Total Guest</p>
                   <input
                     className="form-control"
-                    placeholder="Enter Password"
-                    type="password"
-                    name="password"
+                    placeholder="Enter email"
+                    type="number"
+                    name="guest"
                     required
+                    value={guest}
+                    onChange={(e) =>
+                      setGuest(e.target.value.toLocaleLowerCase())
+                    }
                   />
 
-                  <p className="mb-1">Confirm Password</p>
-                  <input
-                    className="form-control"
-                    placeholder="Confirm password"
-                    type="password"
-                    name="confirmPassword"
-                    required
-                  />
+                  
+
+                 
+
                 </div>
 
                 <Modal.Footer className="mt-3 modalFooter">
@@ -180,4 +164,4 @@ const AddAdminModel = (props) => {
   );
 };
 
-export default AddAdminModel;
+export default AdBookingsModel;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Typography, Modal, Box, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 import Table from "react-bootstrap/Table";
 import swal from "sweetalert";
 import axios from "axios";
 import "./AllBookings.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Pagination from "../../../../Components/Pagination/Pagination";
 import { Card, Col, Row } from "react-bootstrap";
 import { CSVLink } from "react-csv";
@@ -16,7 +16,6 @@ const [categories, setCategories] = useState([]);
 
 
   //****************************** Pagination Start ******************************/
-  const navigate = useNavigate();
   const [getPage, setPage] = useState(1);
   const [show, setShow] = useState(10);
   const [lastPage, setLastPage] = useState(0);
@@ -126,9 +125,9 @@ const [categories, setCategories] = useState([]);
     if ( name === 'room') {
 
       const currentTime = new Date();
-      currentTime.setUTCHours(0, 0, 0, 0); // Set the time to midnight in UTC
+      currentTime.setUTCHours(0, 0, 0, 0); 
       const currentDay = currentTime.getUTCDate().toString().padStart(2, '0');    
-      const currentMonth = (currentTime.getUTCMonth() + 1).toString().padStart(2, '0'); // Adding 1 to the month because January is 0
+      const currentMonth = (currentTime.getUTCMonth() + 1).toString().padStart(2, '0'); 
       const currentYear = currentTime.getUTCFullYear();
       const currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
 

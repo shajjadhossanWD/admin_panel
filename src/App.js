@@ -21,6 +21,7 @@ import ViewBookingsData from "./pages/Dashboard/Bookings/AllBooking/ViewBookings
 import HomePage from "./pages/HomePages/HomePage";
 import PrivacyPolicy from "./pages/HomePages/PrivacyPolicy";
 import SendDeleteRequest from "./pages/HomePages/SendDeleteRequest";
+import RoomBookings from "./pages/Dashboard/Bookings/AllBooking/RoomBookings";
 
 
 
@@ -57,7 +58,6 @@ function App() {
           <Route index element={<HomePage />} />
         </Route>
 
-        {/*************************** Login System ****************************** */}
         <Route path="/" element={<HomePage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/send-delete-request" element={<SendDeleteRequest />} />
@@ -87,7 +87,12 @@ function App() {
             path="all-bookings/:id"
             element={<ViewBookingsData />}
           />
+          <Route
+            path="bookings-details/:date/:room"
+            element={<RoomBookings />}
+          />
         </Route>
+        
         {/*************************** Dashboard End************************** */}
       </Routes>
 
