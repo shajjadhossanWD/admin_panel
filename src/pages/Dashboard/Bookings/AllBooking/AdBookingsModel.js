@@ -12,9 +12,11 @@ const AdBookingsModel = (props) => {
     setModalShowNewAdmin,
     refetch,
     setRefetch,
+    categoryDate,
+    exactTime,
+    room
   } = props;
   
-  const [value, setValue] = useState();
   const [email, setEmail] = useState("");
   const [guest, setGuest] = useState(0);
 
@@ -22,34 +24,27 @@ const AdBookingsModel = (props) => {
   const subNewAdmin = async (event) => {
     event.preventDefault();
     const name = event.target.name.value;
-    const phone = value;
-    const password = event.target.password.value;
-    const confirmPassword = event.target.confirmPassword.value;
 
     const adminData = {
       "name" : name,
       "email": email,
-      "phone": phone,
-      "password": password
+      "guest": guest,
+      "bookingDate": categoryDate,
+      "bookingTime": [exactTime],
+      "roomSelect": room,
+      "bookingCategory": "admin",
+      "userId":"admin",
+      "fcmToken": "admin",
+      "designation": "admin"
     }
 
-    if (password !== confirmPassword) {
-      return swal({
-        title: "Attention",
-        text: "Confirm Password not match!",
-        icon: "warning",
-        button: "OK!",
-        className: "modal_class_success",
-      });
-    } else {
+
+    console.log(adminData)
+   
       await axios
-        .post("https://kccb.kvillagebd.com/api/v1/admin/create", adminData, {
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("kccbAdminToken")}`,
-          },
-        })
+        .post("https://kccb.kvillagebd.com/api/v1/booking/admin", adminData)
         .then((res) => {
-          if (res.status === 201) {
+          if (res.status === 200) {
             setModalShowNewAdmin(false);
             setRefetch(!refetch);
             event.target.reset();
@@ -70,7 +65,7 @@ const AdBookingsModel = (props) => {
             className: "modal_class_success",
           });
         });
-    }
+    
   };
 
 

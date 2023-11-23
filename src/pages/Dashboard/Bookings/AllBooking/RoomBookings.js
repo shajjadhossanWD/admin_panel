@@ -7,16 +7,16 @@ import "./AllBookings.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Pagination from "../../../../Components/Pagination/Pagination";
 import { Card, Col, Row } from "react-bootstrap";
-import { CSVLink } from "react-csv";
 import { useRef } from "react";
 import AdBookingsModel from "./AdBookingsModel";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { forwardRef } from "react";
 
 
 const RoomBookings = () => {
   const [categories, setCategories] = useState([]);
   const {date, room} = useParams();
-  //****************************** Pagination Start ******************************/
   const navigate = useNavigate();
   const [getPage, setPage] = useState(1);
   const [show, setShow] = useState(12);
@@ -25,11 +25,13 @@ const RoomBookings = () => {
 
   const [modalShowNewAdmin, setModalShowNewAdmin] = useState(false);
   const [refetch, setRefetch] = useState(false);
+  const [modalData, setModalData] = useState({
+    categoryDate: "",
+    exactTime: "",
+    room: "",
+  });
 
   const inputRef = useRef(null);
-
-  
-
 
 
   useEffect(() => {
@@ -59,9 +61,6 @@ const RoomBookings = () => {
   }, [categories, show, getPage]);
 
  
-
-  //****************************** Pagination End ******************************/
-
   const getCategory = () => {
     
     fetch(`https://kccb.kvillagebd.com/api/v1/booking/get/bookings-date-room?bookingDate=${date}&roomSelect=${room}`)
@@ -77,9 +76,7 @@ const RoomBookings = () => {
 
   useEffect(() => {
     getCategory();
-  }, []);
-
- 
+  }, [refetch]);
 
 
 
@@ -123,16 +120,40 @@ const RoomBookings = () => {
   };
 
 
+  const handleExpire = () =>{
+    swal({
+      text: "Booking Date/Time Expired!",
+      icon: "warning",
+      button: "OK!",
+      className: "modal_class_success",
+    });
+  }
+
+
   const handleSearch = async () => {
     const currentDateInput = document.querySelector('input[name="date"]');
-    const currentDate = currentDateInput.value;
-  
+    const currentDate = startDate;
+    console.log("currentDate " , currentDate)
+
+    // Assuming inputDate is the date string you provided
+    var inputDate = new Date(currentDate);
+
+    // Extracting day, month, and year
+    var day = ("0" + inputDate.getDate()).slice(-2);
+    var month = ("0" + (inputDate.getMonth() + 1)).slice(-2);
+    var year = inputDate.getFullYear();
+
+    // Creating the formatted date string
+    var formattedDate = day + '-' + month + '-' + year;
+
     const currentRoomSelect = document.querySelector('select[name="room"]');
     const currentRoom = currentRoomSelect.value;
   
-    if (currentDate && currentRoom && currentDate !== 'Invalid Date') {
-      const parts = currentDate.split('-');
-      const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    // if (currentDate && currentRoom && currentDate !== 'Invalid Date') {
+      // const parts = currentDate.split('-');
+      // const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+
+      console.log(formattedDate)
   
       try {
         const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/get/bookings-date-room?bookingDate=${formattedDate}&roomSelect=${currentRoom}`);
@@ -141,59 +162,10 @@ const RoomBookings = () => {
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    }
+    // }
   };
 
-
-
-
-
-  const handleSearchByDate = async (e) => {
-    e.preventDefault();
-
-    const { name, value } = e.target;
   
-    if (name === 'date') {
-      const currentDateInput = document.querySelector('input[name="date"]');
-
-      const currentDate = currentDateInput.value;
-
-        const parts = currentDate.split('-');
-        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-        try {
-          const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/get/all-room-bookings?bookingDate=${formattedDate}`);
-          const data = await response.json();
-          setCategories(data);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-    }
-      
-  }
-  
-  
-  // const formatDataForCSV = (data) => {
-  //   const formattedData = data.map(item => ({
-  //     'Email': item.email ? item.email : 'No email address',
-  //     'Name': item.name,
-  //     'Designation': item.designation,
-  //     'User ID': item.userId,
-  //     'Booking Date': item.bookingDate,
-  //     'Booking Time': item.showingTime.join(', '),
-  //     'Booking Category': item.bookingCategory,
-  //     'Guest': item.guest,
-  //     'Room Select': item.roomSelect,
-  //   }));
-  
-  //   return formattedData;
-  // };
-
-  
-  // const csvData = formatDataForCSV(categories);
-
-
-
-
 
   const lang = new Date().toLocaleString('en-US', {
     timeZone: 'Asia/Dhaka',
@@ -220,8 +192,6 @@ const RoomBookings = () => {
 
 
 
-
-
   function compareTimes(time1, time2) {
     const [hours1, minutes1] = time1.split(':').map(Number);
     const [hours2, minutes2] = time2.split(':').map(Number);
@@ -238,22 +208,29 @@ const RoomBookings = () => {
     }
   }
   const time1 = timePart;
+  const [startDate, setStartDate] = useState(new Date());
 
-  
-
-
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="datepickerCls" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
+ 
 
   return (
     <>
       <h5 className="text-white text-start text-uppercase pt-1">ALL BOOKINGS</h5>
     
+      
+
       <Row className="g-5">
         <Col className="py-2">
           <Card className="customerCard">
             <Card.Body>
               <Card.Text className="dashboardTxt">
               <div className="d-flex flex-column flex-lg-row justify-content-evenly gap-3">
-                    <input
+
+                    {/* <input
                     type="Date"
                     name="date"
                     className="py-3 pl-2 w-100 w-lg-25 rounded"
@@ -261,7 +238,23 @@ const RoomBookings = () => {
                     onClick={() => inputRef.current.focus()}
                     onFocus={() => inputRef.current.blur()}
                     ref={inputRef}
+                    /> */}
+                    <span className="w-100 w-lg-25">
+                    <DatePicker 
+                      selected={startDate} 
+                      onChange={(date) => setStartDate(date)}
+                      dateFormat="dd-MM-yyyy" 
+                      name="date"
+                      customInput={<ExampleCustomInput />}
+                      className="py-3 pl-2 pr-5 rounded"
                     />
+                    </span>
+                    
+
+                    
+                      
+                    
+
                     <select
                     name="room"
                     className="py-2 pl-2 border border-white rounded w-100 w-lg-25"
@@ -293,7 +286,6 @@ const RoomBookings = () => {
               <th>Room</th>
               <th>Time-slot</th>
               <th>Status</th>
-              {/* <th>Room</th> */}
               <th className="text-end">ACTIONS</th>
             </tr>
           </thead>
@@ -313,31 +305,40 @@ const RoomBookings = () => {
                             <Tooltip title="Booking Time Expired" placement="top">
                             <button 
                             className="btn btn-danger"
-                            // disabled={(parseCustomDateString(category?.date) < date1 || (parseCustomDateString(category?.date) <= date1 && compareTimes(time1, category?.exact_time) > 0) ) ? true : false}
+                            onClick={handleExpire}
                             >
 
                             <i class="fas fa-times-circle"></i> 
                             </button>
                             </Tooltip>
                             :
-                          <Tooltip title="Add Booking now" placement="top">
-                            <button 
-                            className="btn btn-info"
-                            onClick={() => setModalShowNewAdmin(true)}
-                            disabled={(parseCustomDateString(category?.date) < date1 || (parseCustomDateString(category?.date) <= date1 && compareTimes(time1, category?.exact_time) > 0) ) ? true : false}
+                            <Tooltip title="Add Booking now" placement="top">
+                            <button
+                              className="btn btn-info"
+                              onClick={() =>
+                                setModalShowNewAdmin(true, setModalData({
+                                  categoryDate: category.date,
+                                  exactTime: category.exact_time,
+                                  room: category.room,
+                                }))
+                              }
+                              disabled={
+                                parseCustomDateString(category?.date) < date1 ||
+                                (parseCustomDateString(category?.date) <= date1 &&
+                                  compareTimes(time1, category?.exact_time) > 0)
+                                  ? true
+                                  : false
+                              }
                             >
-
-                            <i class="fas fa-plus"></i> 
+                              <i className="fas fa-plus"></i>
                             </button>
-                            </Tooltip>
+                          </Tooltip>
                         
                         }             
                     </>
                   
                   }</td>
                    
-                  
-
                   <td>
                   <div className="text-end">
                       <Tooltip title="Update category." placement="top">
@@ -389,7 +390,11 @@ const RoomBookings = () => {
           setRefetch={setRefetch}
           setModalShowNewAdmin={setModalShowNewAdmin}
           onHide={() => setModalShowNewAdmin(false)}
-        />
+          categoryDate={modalData.categoryDate}
+          exactTime={modalData.exactTime}
+          room={modalData.room}
+      />
+
     </>
   );
 };

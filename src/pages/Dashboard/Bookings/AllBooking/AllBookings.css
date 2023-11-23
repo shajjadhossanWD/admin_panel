@@ -7,6 +7,86 @@
   background-color: #272D47;
 }
 
+.datepickerCls{
+  /* width: 31rem; */
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  background-color: white;
+  display: block;
+}
+
+@media only screen and (max-width: 3000px) {
+  .datepickerCls{
+    width: 43rem;
+    
+  }
+}
+
+@media only screen and (max-width: 2700px) {
+  .datepickerCls{
+    width: 39rem;
+    
+  }
+}
+
+@media only screen and (max-width: 2300px) {
+  .datepickerCls{
+    width: 35rem;
+    
+  }
+}
+
+@media only screen and (max-width: 2100px) {
+  .datepickerCls{
+    width: 31rem;
+    
+  }
+}
+
+@media only screen and (max-width: 1900px) {
+  .datepickerCls{
+    width: 31rem;
+    
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .datepickerCls{
+    width: 18rem;
+    
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .datepickerCls{
+    width: 13rem;
+    
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .datepickerCls{
+    width: 26rem;
+    
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .datepickerCls{
+    width: 21rem;
+    
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .datepickerCls{
+    width: 18rem;
+    
+  }
+}
+
 @media only screen and (max-width: 350px) {
   .categoryBtnDiv {
     float: right;

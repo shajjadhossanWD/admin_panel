@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import { Tooltip } from "@mui/material";
 import Table from "react-bootstrap/Table";
 import swal from "sweetalert";
-import axios from "axios";
 import "./AllBookings.css";
 import { Link, useNavigate } from "react-router-dom";
 import Pagination from "../../../../Components/Pagination/Pagination";
 import { Card, Col, Row } from "react-bootstrap";
-import { CSVLink } from "react-csv";
-import { useRef } from "react";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const AllBookings = () => {
@@ -20,10 +18,6 @@ const AllBookings = () => {
   const [show, setShow] = useState(10);
   const [lastPage, setLastPage] = useState(0);
   const [sliceCategories, setSliceCategories] = useState([]);
-
-  const inputRef = useRef(null);
-
-  
 
 
 
@@ -57,30 +51,28 @@ const AllBookings = () => {
 
   //****************************** Pagination End ******************************/
 
+  const [startDate, setStartDate] = useState(new Date());
+
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="datepickerCls" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
+
   const getCategory = () => {
-    const lang = new Date().toLocaleString('en-US', {
-      timeZone: 'Asia/Dhaka',
-      hourCycle: 'h23',
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit"
-      // second: "2-digit"
-    });
-    
-    // Convert the string to a Date object
-    const dateObject = new Date(lang);
-    
-    // Extract the date components
-    const day = dateObject.getDate();
-    const month = dateObject.getMonth() + 1; // Months are zero-based
-    const year = dateObject.getFullYear();
-    
-    // Format the date as DD-MM-YYYY
-    const formattedDate = `${day < 10 ? '0' : ''}${day}-${month < 10 ? '0' : ''}${month}-${year}`;
-    
-    console.log(formattedDate);
+    const currentDate = startDate;
+     console.log("currentDate " , currentDate)
+
+     // Assuming inputDate is the date string you provided
+     var inputDate = new Date(currentDate);
+
+     // Extracting day, month, and year
+     var day = ("0" + inputDate.getDate()).slice(-2);
+     var month = ("0" + (inputDate.getMonth() + 1)).slice(-2);
+     var year = inputDate.getFullYear();
+
+     // Creating the formatted date string
+     var formattedDate = day + '-' + month + '-' + year;
     
     fetch(`https://kccb.kvillagebd.com/api/v1/booking/get/all-room-bookings?bookingDate=${formattedDate}`)
       .then((res) => res.json())
@@ -95,136 +87,115 @@ const AllBookings = () => {
 
   useEffect(() => {
     getCategory();
-  }, []);
+  }, [startDate]);
 
  
 
 
 
-  const deleteWarning = (category) => {
-    swal({
-      title: "Are you sure to delete " + category.roomSelect + " room Booking ?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        handleDelete(category._id);
-      } else {
-        swal("Your imaginary file is safe!");
-      }
-    });
-  };
+  // const deleteWarning = (category) => {
+  //   swal({
+  //     title: "Are you sure to delete " + category.roomSelect + " room Booking ?",
+  //     icon: "warning",
+  //     buttons: true,
+  //     dangerMode: true,
+  //   }).then((willDelete) => {
+  //     if (willDelete) {
+  //       handleDelete(category._id);
+  //     } else {
+  //       swal("Your imaginary file is safe!");
+  //     }
+  //   });
+  // };
 
 
-  const handleDelete = async (id) => {
-    console.log("handleDelete");
-    console.log(id);
-    try {
-      const response = await axios.delete(
-        "https://kccb.kvillagebd.com/api/v1/booking/delete/" + id
-      );
-      if (response.status === 200) {
-        swal({
-          text: response.data.message,
-          icon: "success",
-          button: "OK!",
-          className: "modal_class_success",
-        });
-      }
-      console.log(response);
-      getCategory();
-    } catch (error) {
-      console.log("error");
-      console.log(error);
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   console.log("handleDelete");
+  //   console.log(id);
+  //   try {
+  //     const response = await axios.delete(
+  //       "https://kccb.kvillagebd.com/api/v1/booking/delete/" + id
+  //     );
+  //     if (response.status === 200) {
+  //       swal({
+  //         text: response.data.message,
+  //         icon: "success",
+  //         button: "OK!",
+  //         className: "modal_class_success",
+  //       });
+  //     }
+  //     console.log(response);
+  //     getCategory();
+  //   } catch (error) {
+  //     console.log("error");
+  //     console.log(error);
+  //   }
+  // };
 
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    inputRef.current.focus();
+  // const handleSearch = async (e) => {
+  //   e.preventDefault();
+  //   inputRef.current.focus();
 
-    const { name, value } = e.target;
+  //   const { name, value } = e.target;
   
-    if (name === 'date' || name === 'room') {
-      const currentDateInput = document.querySelector('input[name="date"]');
+  //   if (name === 'date' || name === 'room') {
+  //     const currentDateInput = document.querySelector('input[name="date"]');
 
-      const currentDate = currentDateInput.value;
-      const currentRooms = document.querySelector('select[name="room"]').value;
+  //     const currentDate = currentDateInput.value;
+  //     const currentRooms = document.querySelector('select[name="room"]').value;
 
-      if(currentDate && currentRooms === 'default'){
+  //     if(currentDate && currentRooms === 'default'){
 
-        const parts = currentDate.split('-');
-        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-        try {
-          const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/search-by-room-date?date=${formattedDate}`);
-          const data = await response.json();
-          setCategories(data.results);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
+  //       const parts = currentDate.split('-');
+  //       const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+  //       try {
+  //         const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/search-by-room-date?date=${formattedDate}`);
+  //         const data = await response.json();
+  //         setCategories(data.results);
+  //       } catch (error) {
+  //         console.error('Error fetching data:', error);
+  //       }
 
-      } 
+  //     } 
       
-      else if (currentDate && currentRooms !== 'default'){
+  //     else if (currentDate && currentRooms !== 'default'){
 
-        const parts = currentDate.split('-');
-        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-        const currentRoom = document.querySelector('select[name="room"]').value;
-        try {
-          const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/search-by-room-date?date=${formattedDate}&room=${currentRoom}`);
-          const data = await response.json();
-          setCategories(data.results);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
+  //       const parts = currentDate.split('-');
+  //       const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+  //       const currentRoom = document.querySelector('select[name="room"]').value;
+  //       try {
+  //         const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/search-by-room-date?date=${formattedDate}&room=${currentRoom}`);
+  //         const data = await response.json();
+  //         setCategories(data.results);
+  //       } catch (error) {
+  //         console.error('Error fetching data:', error);
+  //       }
 
-      }
+  //     }
      
-      else if (!currentDate && currentRooms){
+  //     else if (!currentDate && currentRooms){
 
-        const currentRoom = document.querySelector('select[name="room"]').value;
-        try {
-          const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/search-by-room-date?room=${currentRoom}`);
-          const data = await response.json();
-          setCategories(data.results);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-        if(currentRoom === "default"){
-          getCategory();
-        }
-      } 
-    }
-  };
-
-
+  //       const currentRoom = document.querySelector('select[name="room"]').value;
+  //       try {
+  //         const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/search-by-room-date?room=${currentRoom}`);
+  //         const data = await response.json();
+  //         setCategories(data.results);
+  //       } catch (error) {
+  //         console.error('Error fetching data:', error);
+  //       }
+  //       if(currentRoom === "default"){
+  //         getCategory();
+  //       }
+  //     } 
+  //   }
+  // };
 
 
 
-  const handleSearchByDate = async (e) => {
-    e.preventDefault();
 
-    const { name, value } = e.target;
-  
-    if (name === 'date') {
-      const currentDateInput = document.querySelector('input[name="date"]');
 
-      const currentDate = currentDateInput.value;
 
-        const parts = currentDate.split('-');
-        const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-        try {
-          const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/get/all-room-bookings?bookingDate=${formattedDate}`);
-          const data = await response.json();
-          setCategories(data);
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-    }
-      
-  }
   
   
   // const formatDataForCSV = (data) => {
@@ -247,6 +218,41 @@ const AllBookings = () => {
   // const csvData = formatDataForCSV(categories);
 
 
+ 
+
+
+
+//   const handleSearchByDate = async (date) => {
+//     setStartDate(date)
+//     date.preventDefault();
+
+//      const currentDate = date;
+//      console.log("currentDate " , currentDate)
+
+//      // Assuming inputDate is the date string you provided
+//      var inputDate = new Date(currentDate);
+
+//      // Extracting day, month, and year
+//      var day = ("0" + inputDate.getDate()).slice(-2);
+//      var month = ("0" + (inputDate.getMonth() + 1)).slice(-2);
+//      var year = inputDate.getFullYear();
+
+//      // Creating the formatted date string
+//      var formattedDate = day + '-' + month + '-' + year;
+
+
+//      try {
+//        const response = await fetch(`https://kccb.kvillagebd.com/api/v1/booking/get/all-room-bookings?bookingDate=${formattedDate}`);
+//        const data = await response.json();
+//        setCategories(data);
+//      } catch (error) {
+//        console.error('Error fetching data:', error);
+//      }
+ 
+ 
+// }
+
+
   return (
     <>
       <h5 className="text-white text-start text-uppercase pt-1">ALL BOOKINGS</h5>
@@ -257,7 +263,9 @@ const AllBookings = () => {
             <Card.Body>
               <Card.Text className="dashboardTxt">
                 <div className="d-flex flex-column flex-lg-row justify-content-evenly gap-3">
-                  <input
+
+
+                  {/* <input
                     type="Date"
                     name="date"
                     onChange={(e) => handleSearchByDate(e)}
@@ -266,7 +274,18 @@ const AllBookings = () => {
                     onClick={() => inputRef.current.focus()}
                     onFocus={() => inputRef.current.blur()}
                     ref={inputRef}
-                  />
+                  /> */}
+
+                  <span className="w-100 w-lg-25">
+                    <DatePicker 
+                      selected={startDate} 
+                      onChange={(date) => setStartDate(date)}
+                      dateFormat="dd-MM-yyyy" 
+                      name="date"
+                      customInput={<ExampleCustomInput />}
+                      className="py-3 pl-2 pr-5 rounded"
+                    />
+                    </span>
                           
 
                   
